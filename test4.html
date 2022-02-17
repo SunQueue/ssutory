@@ -1,0 +1,128 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>WebView</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div>
+        <center>
+            <img src="https://realworld.blob.core.windows.net/user-files/5NwAFYpqF_R-AlCbaUJZVw/22-02-13-05-28-32_hRjpoyn8N9A.png" />
+            <p><br /></p>
+            <p>몽골 민족에 의한 정복지 지배는</p>
+            <p><br /></p>
+            <p>세조가 즉위하는 중통원년을 분기점으로하여</p>
+            <p><br /></p>
+            <p>그 이전의 몽골제국시대와</p>
+            <p><br /></p>
+            <p>이후의 원제국시대로 양분된다.</p>
+            <p><br /></p>
+            <p>몽골제국시대의</p>
+            <p><br /></p>
+            <p>지배체제는</p>
+            <p><br /></p>
+            <p>징기즈칸에 의하여 골격이 마련되었고</p>
+            <p><br /></p>
+            <p>2대 오고타이에 의해 그 내용이 보완-계승되었다.</p>
+            <p><br /></p>
+            <p>아무말대잔치</p>
+        </center>
+    </div>
+
+    <div style="color: white;" class="px-2 pb-4">
+        <button class="btn btn-block btn-lg btn-primary" onclick="submitAction()">
+				다음으로 넘어가기
+			</button>
+    </div>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            background-image: url('https://i.pinimg.com/564x/b7/1a/eb/b71aeb3fa3143c758a9248521c2e2f09.jpg');
+        }
+        
+        img {
+            width: 100%;
+            max-width: 400px;
+            max-height: 400px;
+        }
+        
+        body {
+            position: relative;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        .btn {
+            border-radius: 10rem;
+        }
+        
+        .btn-primary,
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #000;
+            border-color: #000;
+        }
+        
+        .btn-primary:focus,
+        .btn-primary.focus {
+            color: #fff;
+            background-color: #000;
+            border-color: #000;
+            box-shadow: none;
+        }
+        
+        .btn-primary:not(:disabled):not(.disabled):active,
+        .btn-primary:not(:disabled):not(.disabled).active,
+        .show>.btn-primary.dropdown-toggle {
+            color: #fff;
+            background-color: #666666;
+            border-color: #000;
+        }
+        
+        .btn-primary:not(:disabled):not(.disabled):active:focus,
+        .btn-primary:not(:disabled):not(.disabled).active:focus,
+        .show>.btn-primary.dropdown-toggle:focus {
+            box-shadow: none;
+        }
+    </style>
+
+    <script>
+        /// Library Start ///
+        window.RealWorld = {
+            _onCameraFrameCallback: null,
+            invoke(name, ...params) {
+                let callName = name;
+                if (window.Android) {
+                    if (params.length === 0) {
+                        window.Android[callName]();
+                    } else {
+                        window.Android[callName](...params);
+                    }
+                }
+            },
+            closePage() {
+                window.RealWorld.invoke('closePage');
+            },
+            submitAction(input) {
+                window.RealWorld.invoke('submitAction', input);
+            },
+        };
+        /// Library End ///
+        function submitAction() {
+            window.RealWorld.submitAction('');
+        }
+
+        function closePage() {
+            window.RealWorld.closePage();
+        }
+    </script>
+</body>
+
+</html>

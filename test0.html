@@ -1,0 +1,116 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>WebView</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
+</head>
+
+<body>
+    <span> 
+			<p>
+				정신이 드니? 1학년으로 돌아온 기분이 어때?
+				<br><br><br><br><br>
+				만나서 반가워.
+				<br><br><br><br><br>
+				나는 우리 학교 시계탑에 사는 
+				<br><br><br><br><br>
+				시계탑의 요정 통일이라고 해.
+				<br><br><br><br><br>
+				면접에서 아깝게 떨어져서 상심이 크지?
+				<br><br><br><br><br>
+				슬퍼하고 있을 너를 위해 잠시 시간을 되돌려봤어.
+				<br>
+				나랑 같이 우리 학교의 역사를 탐험하고, 훌륭한 사람들에 대해 알아보고 나면
+				<br><br><br><br><br>
+				다음 면접에서는 자신 있게 설명할 수 있을 거야!
+				<br><br><br><br><br>
+				이 여정이 끝나면 너를 면접 직전으로 다시 보내 줄게~
+				<br><br><br><br><br>
+				<br>
+			</p>
+		</span>
+    <div style="position: absolute; left: 0; bottom: 0; right: 0; color: white;" class="px-2 pb-4">
+        <button class="btn btn-block btn-lg btn-primary" onclick="submitAction()">
+				특별한 렌즈 닫기
+			</button>
+    </div>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+            background-image: url('https://i.pinimg.com/564x/b7/1a/eb/b71aeb3fa3143c758a9248521c2e2f09.jpg');
+        }
+        
+        canvas,
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        body {
+            position: relative;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <canvas id="my-canvas" class="mw-100"></canvas>
+
+    <script>
+        /// Library Start ///
+        window.RealWorld = {
+            _onCameraFrameCallback: null,
+            invoke(name, ...params) {
+                let callName = name;
+                if (window.webkit && window.webkit.messageHandlers) {
+                    if (params.length === 0) {
+                        window.webkit.messageHandlers[callName].postMessage('');
+                    } else {
+                        window.webkit.messageHandlers[callName].postMessage(...params);
+                    }
+                } else if (window.Android) {
+                    if (params.length === 0) {
+                        window.Android[callName]();
+                    } else {
+                        window.Android[callName](...params);
+                    }
+                }
+            },
+            beginCameraFrameStream(camera, callback) {
+                window.RealWorld._onCameraFrameCallback = callback;
+                window.RealWorld.invoke('beginCameraFrameStream', camera);
+            },
+            closePage() {
+                window.RealWorld.invoke('closePage');
+            },
+            submitAction(input) {
+                window.RealWorld.invoke('submitAction', input);
+            },
+        };
+
+        /// Library End ///
+        function submitAction() {
+            window.RealWorld.submitAction('');
+        }
+
+        function closePage() {
+            window.RealWorld.closePage();
+        }
+
+        let canvas = document.getElementById('my-canvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let ctx = canvas.getContext('2d');
+        let img = new Image();
+        img.onload = function() {
+            drawImageProp(ctx, img);
+        };
+    </script>
+</body>
+
+</html>
